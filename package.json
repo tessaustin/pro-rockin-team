@@ -1,0 +1,26 @@
+{
+  "name": "pro-rockin-team",
+  "version": "1.0.0",
+  "description": "team profile generator",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "jest": "^26.6.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tessaustin/pro-rockin-team.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tessaustin/pro-rockin-team/issues"
+  },
+  "homepage": "https://github.com/tessaustin/pro-rockin-team#readme"
+}
