@@ -9,6 +9,26 @@ test('employee object', () => {
     expect(employee.email).toEqual(expect.any(String));
 });
 
-test("gets emplyee's name", () => {
-    const employee = new Employee
-})
+test('employee name', () => {
+    const employee = new Employee('Dave');
+
+    expect(employee.getName()).toEqual(expect.any(String));
+});
+
+test('employee ID', () => {
+    const employee = new Employee('Dave');
+
+    expect(employee.getId()).toEqual(expect.any(Number));
+});
+
+test('employee email', () => {
+    const employee = new Employee('Dave');
+
+    expect(employee.getEmail()).toEqual(expect.stringContaining(employee.email.toString()));
+});
+
+test('role of employee', () => {
+    const employee = new Employee('Dave');
+
+    expect(employee.getRole()).toEqual("Employee");
+});
