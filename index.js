@@ -8,7 +8,7 @@ const Manager = require('./lib/Manager');
 const fs = require('fs');
 //const { writeFile, copyFile } = require('./utils/generate-site.js');
 const inquirer = require('inquirer');
-const generatepage = require('./src/page-template');
+generatepage = require('./src/page-template');
 
 
 const teamArr = [];
@@ -231,7 +231,7 @@ const writeFile = data => {
 // function to initialize program
 qManager()
     .then(addMoreTeam)
-    .then(teamArr => {
+    .then(() => {
         return generatepage(teamArr);
       })
       .then(pageHTML => {
