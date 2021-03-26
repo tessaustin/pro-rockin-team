@@ -95,17 +95,10 @@ const addMoreTeam = () => {
             if (answers.confirmEmployee) {
                 return qEmployee(teamArr); 
             } else {
-                return teamArr;
+                return generatePage(teamArr);
             }
     });
 };
-
-// const addEmployee = {
-//     type: 'list',
-//     name: 'teamSize',
-//     message: 'Would you like to add another team member to this team?',
-//     choices: ['Yes', 'No'],
-// };
 
 //Adding another employee to team profile
 const qEmployee = () => {
@@ -223,19 +216,6 @@ const qEmployee = () => {
     
     };
     
-
-// function teamSizeInfo() {
-//     inquirer.prompt(addEmployee).then((teamSize) => {
-//         //if yes
-//         if (teamSize.teamSize === 'Yes') {
-//             teamMemberLoop();
-//         }
-//         if (teamSize.teamSize === 'No') {
-//             //if no
-//             renderHTML(teamMembersArray);
-//         }
-//     });
-// }
 //Function to generate HTML file
 const writeFile = data => {
     fs.writeFile('./dist/index.html', data, err => {
