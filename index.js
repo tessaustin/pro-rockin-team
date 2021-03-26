@@ -205,13 +205,14 @@ const qEmployee = () => {
                 console.log(employee);
             }
     
-            // teamArr.push(employee); 
-    
-            // if (confirmEmployee) {
-            //     return qEmployee(teamArr); 
-            // } else {
-            //     return teamArr;
-            // }
+            teamArr.push(employee); 
+            
+            if (employee.confirmEmployee) {
+                return qEmployee(); 
+            } else {
+                return teamArr;
+            }
+            
         })
     
     };
