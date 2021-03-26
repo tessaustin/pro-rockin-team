@@ -59,11 +59,11 @@ const generateIntern = function (intern) {
 generatepage = (data) => {
 
     // array for cards 
-    pageArr = []; 
+    pageArr = [];
 
     for (let i = 0; i < data.length; i++) {
         const employee = data[i];
-        const role = employee.getRole(); 
+        const role = employee.getRole();
 
 
         // call manager function
@@ -86,21 +86,21 @@ generatepage = (data) => {
 
             pageArr.push(internCard);
         }
-        
+
     }
 
     // joining strings 
     const employeeCards = pageArr.join('')
 
     // return to generated page
-    const generateTeam = generateTeamPage(employeeCards); 
+    const generateTeam = generateTeamPage(employeeCards);
     return generateTeam;
 
 }
 
 // generate html page 
-const generateTeamPage = function (employeeCards) {   
-  return`
+const generateTeamPage = function (employeeCards) {
+    return `
   <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -137,4 +137,4 @@ const generateTeamPage = function (employeeCards) {
 }
 
 // export
-module.exports = generatepage; 
+module.exports = generatepage;

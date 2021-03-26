@@ -83,6 +83,7 @@ const qManager = () => {
         });
 };
 
+//more employee's to add
 const addMoreTeam = () => {
     return inquirer.prompt([
         {
