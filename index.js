@@ -9,7 +9,7 @@ const fs = require('fs');
 const inquirer = require('inquirer');
 const generateHTML = require('./src/generateHTML');
 const Prompt = require('inquirer/lib/prompts/base');
-const teamData = [];
+const teamArr = [];
 
 //Array of questions for employee input 
 const qManager = () => {
@@ -75,6 +75,12 @@ const qManager = () => {
         ])
 };
 
+// const addEmployee = {
+//     type: 'list',
+//     name: 'teamSize',
+//     message: 'Would you like to add another team member to this team?',
+//     choices: ['Yes', 'No'],
+// };
 
 //Adding another employee to team profile
 const qEmployee = () => {
@@ -82,14 +88,14 @@ const qEmployee = () => {
         .prompt([
             {
                 type: 'confirm',
-                name: 'confirmAddEmployee',
-                message: 'Would you like to add more team members?',
+                name: 'confirmEmployee',
+                message: 'Would you like to add another team member?',
                 default: false
             },
             {
                 type: 'list',
                 name: 'role',
-                message: "Employee's role",
+                message: "Employee's role:",
                 choices: ['Engineer', 'Intern']
             },
             {
@@ -167,11 +173,50 @@ const qEmployee = () => {
                         console.log("Please enter the intern's school!")
                     }
                 }
-            }
+            },
+
         ])
-};
+        .then(teamData => {
+            //employee types 
+    
+            let { name, id, email, role, github, school, confirmEmployee } = teamData; 
+            let employee; 
+    
+            if (role === "Engineer") {
+                employee = new Engineer (name, id, email, github);
+    
+                console.log(employee);
+    
+            } else if (role === "Intern") {
+                employee = new Intern (name, id, email, school);
+    
+                console.log(employee);
+            }
+    
+            teamArr.push(employee); 
+    
+            if (confirmEmployee) {
+                return qEmployee(teamArr); 
+            } else {
+                return teamArr;
+            }
+        })
+    
+    };
+    
 
-
+// function teamSizeInfo() {
+//     inquirer.prompt(addEmployee).then((teamSize) => {
+//         //if yes
+//         if (teamSize.teamSize === 'Yes') {
+//             teamMemberLoop();
+//         }
+//         if (teamSize.teamSize === 'No') {
+//             //if no
+//             renderHTML(teamMembersArray);
+//         }
+//     });
+// }
 //Function to generate HTML file
 const writeFile = data => {
     fs.writeFile('./dist/index.html', data, err => {
@@ -188,8 +233,8 @@ const writeFile = data => {
 // function to initialize program
 qManager()
     .then(qEmployee)
-    .then(teamData => {
-        return generatePage(teamData)
+    .then(employeeArr => {
+        return generatePage(employeeArr)
     })
     .then(pageHTML => {
         return writeFile(pageHTML)
