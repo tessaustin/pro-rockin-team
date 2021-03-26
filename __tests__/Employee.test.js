@@ -5,8 +5,8 @@ test('employee object', () => {
     const employee = new Employee('Dave', '20', 'hey@guy.com');
 
     expect(employee.name).toBe('Dave');
-    expect(employee.id).toEqual(expect.any(Number));
-    expect(employee.email).toEqual(expect.any(String));
+    expect(employee.id).toBe('20');
+    expect(employee.email).toBe('hey@guy.com');
 });
 
 test('employee name', () => {
@@ -16,7 +16,7 @@ test('employee name', () => {
 });
 
 test('employee ID', () => {
-    const employee = new Employee('Dave', '20', 'hey@guy.com');
+    const employee = new Employee('Dave', '20');
 
     expect(employee.getId()).toEqual(expect.any(Number));
 });
