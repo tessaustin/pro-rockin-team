@@ -73,6 +73,31 @@ const qManager = () => {
                 }
             }
         ])
+        .then(managerInput => {
+            const  { name, id, email, officeNumber } = managerInput; 
+            const manager = new Manager (name, id, email, officeNumber);
+    
+            teamArr.push(manager); 
+            console.log(manager); 
+        });
+};
+
+const addMoreTeam = () => {
+    return inquirer.prompt([
+        {
+            type: "confirm",
+            name: "confirmEmployee",
+            message: "Would you like to add another team member?",
+            default: false
+        }
+
+    ]).then(answers => {
+            if (answers.confirmEmployee) {
+                return qEmployee(teamArr); 
+            } else {
+                return teamArr;
+            }
+    });
 };
 
 // const addEmployee = {
@@ -86,12 +111,6 @@ const qManager = () => {
 const qEmployee = () => {
     return inquirer
         .prompt([
-            {
-                type: 'confirm',
-                name: 'confirmEmployee',
-                message: 'Would you like to add another team member?',
-                default: false
-            },
             {
                 type: 'list',
                 name: 'role',
@@ -193,13 +212,13 @@ const qEmployee = () => {
                 console.log(employee);
             }
     
-            teamArr.push(employee); 
+            // teamArr.push(employee); 
     
-            if (confirmEmployee) {
-                return qEmployee(teamArr); 
-            } else {
-                return teamArr;
-            }
+            // if (confirmEmployee) {
+            //     return qEmployee(teamArr); 
+            // } else {
+            //     return teamArr;
+            // }
         })
     
     };
@@ -232,9 +251,10 @@ const writeFile = data => {
 
 // function to initialize program
 qManager()
+    .then(addMoreTeam)
     .then(qEmployee)
-    .then(employeeArr => {
-        return generatePage(employeeArr)
+    .then(teamArr => {
+        return generatePage(teamArr)
     })
     .then(pageHTML => {
         return writeFile(pageHTML)
