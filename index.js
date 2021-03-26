@@ -4,11 +4,13 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 
-//Packages needed for app
+//Packages needed
 const fs = require('fs');
+//const { writeFile, copyFile } = require('./utils/generate-site.js');
 const inquirer = require('inquirer');
-const generateHTML = require('./src/generateHTML');
-const Prompt = require('inquirer/lib/prompts/base');
+const generatepage = require('./src/page-template');
+
+
 const teamArr = [];
 
 //Array of questions for employee input 
@@ -229,6 +231,12 @@ const writeFile = data => {
 // function to initialize program
 qManager()
     .then(addMoreTeam)
+    .then(teamArr => {
+        return generatepage(teamArr);
+      })
+      .then(pageHTML => {
+        return writeFile(pageHTML);
+      })
     .catch(err => {
         console.log(err);
     });
