@@ -6,7 +6,6 @@ const Manager = require('./lib/Manager');
 
 //Packages needed
 const fs = require('fs');
-//const { writeFile, copyFile } = require('./utils/generate-site.js');
 const inquirer = require('inquirer');
 generatepage = require('./src/page-template');
 
@@ -76,11 +75,11 @@ const qManager = () => {
             }
         ])
         .then(managerInput => {
-            const  { name, id, email, officeNumber } = managerInput; 
-            const manager = new Manager (name, id, email, officeNumber);
-    
-            teamArr.push(manager); 
-            console.log(manager); 
+            const { name, id, email, officeNumber } = managerInput;
+            const manager = new Manager(name, id, email, officeNumber);
+
+            teamArr.push(manager);
+            console.log(manager);
         });
 };
 
@@ -94,11 +93,9 @@ const addMoreTeam = () => {
         }
 
     ]).then(answers => {
-            if (answers.confirmEmployee) {
-                return qEmployee(teamArr); 
-            } else {
-                //return generatePage(teamArr);
-            }
+        if (answers.confirmEmployee) {
+            return qEmployee(teamArr);
+        }
     });
 };
 
@@ -193,28 +190,28 @@ const qEmployee = () => {
         ])
         .then(teamData => {
             //employee types 
-    
-            let { name, id, email, role, github, school, confirmEmployee } = teamData; 
-            let employee; 
-    
+
+            let { name, id, email, role, github, school, confirmEmployee } = teamData;
+            let employee;
+
             if (role === "Engineer") {
-                employee = new Engineer (name, id, email, github);
-    
+                employee = new Engineer(name, id, email, github);
+
                 console.log(employee);
-    
+
             } else if (role === "Intern") {
-                employee = new Intern (name, id, email, school);
-    
+                employee = new Intern(name, id, email, school);
+
                 console.log(employee);
             }
-    
-            teamArr.push(employee); 
+
+            teamArr.push(employee);
 
             return addMoreTeam();
         })
-    
-    };
-    
+
+};
+
 //Function to generate HTML file
 const writeFile = data => {
     fs.writeFile('./dist/index.html', data, err => {
@@ -233,10 +230,10 @@ qManager()
     .then(addMoreTeam)
     .then(() => {
         return generatepage(teamArr);
-      })
-      .then(pageHTML => {
+    })
+    .then(pageHTML => {
         return writeFile(pageHTML);
-      })
+    })
     .catch(err => {
         console.log(err);
     });
