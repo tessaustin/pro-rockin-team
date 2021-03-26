@@ -8,7 +8,7 @@ test('intern object', () => {
 });
 
 test('intern school', () => {
-    const intern = new Intern('Dave', '0000', 'new@guy.com', 'College');
+    const intern = new Intern('Dave', '0000', 'hey@guy.com', 'College');
 
     expect(intern.getSchool()).toEqual(expect.stringContaining(intern.school.toString()));
 });
