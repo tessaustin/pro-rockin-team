@@ -207,12 +207,7 @@ const qEmployee = () => {
             }
     
             teamArr.push(employee); 
-            // console.log()
-            // if (employee.confirmEmployee) {
-            //     return addMoreTeam(); 
-            // } else {
-            //     return teamArr;
-            // }
+
             return addMoreTeam();
         })
     
@@ -234,13 +229,6 @@ const writeFile = data => {
 // function to initialize program
 qManager()
     .then(addMoreTeam)
-    //.then(qEmployee)
-    // .then(teamArr => {
-    //     return generatePage(teamArr)
-    // })
-    // .then(pageHTML => {
-    //     return writeFile(pageHTML)
-    // })
     .catch(err => {
         console.log(err);
     });
