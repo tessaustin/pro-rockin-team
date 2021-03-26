@@ -10,15 +10,15 @@ test('employee object', () => {
 });
 
 test('employee name', () => {
-    const employee = new Employee('Dave');
+    const employee = new Employee('Dave', '20', 'hey@guy.com');
 
     expect(employee.getName()).toEqual(expect.any(String));
 });
 
 test('employee ID', () => {
-    const employee = new Employee('Dave', '20');
+    const employee = new Employee('Dave', '20', 'hey@guy.com');
 
-    expect(employee.getId()).toEqual(expect.any(Number));
+    expect(employee.getId()).toEqual(expect.stringContaining('20'));
 });
 
 test('employee email', () => {
@@ -28,7 +28,7 @@ test('employee email', () => {
 });
 
 test('role of employee', () => {
-    const employee = new Employee('Dave');
+    const employee = new Employee('Dave', '20', 'hey@guy.com');
 
     expect(employee.getRole()).toEqual("Employee");
 });
