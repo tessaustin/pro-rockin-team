@@ -95,7 +95,7 @@ const addMoreTeam = () => {
             if (answers.confirmEmployee) {
                 return qEmployee(teamArr); 
             } else {
-                return generatePage(teamArr);
+                //return generatePage(teamArr);
             }
     });
 };
@@ -187,6 +187,7 @@ const qEmployee = () => {
                 }
             },
 
+
         ])
         .then(teamData => {
             //employee types 
@@ -206,13 +207,13 @@ const qEmployee = () => {
             }
     
             teamArr.push(employee); 
-            
-            if (employee.confirmEmployee) {
-                return qEmployee(); 
-            } else {
-                return teamArr;
-            }
-            
+            // console.log()
+            // if (employee.confirmEmployee) {
+            //     return addMoreTeam(); 
+            // } else {
+            //     return teamArr;
+            // }
+            return addMoreTeam();
         })
     
     };
@@ -233,13 +234,13 @@ const writeFile = data => {
 // function to initialize program
 qManager()
     .then(addMoreTeam)
-    .then(qEmployee)
-    .then(teamArr => {
-        return generatePage(teamArr)
-    })
-    .then(pageHTML => {
-        return writeFile(pageHTML)
-    })
+    //.then(qEmployee)
+    // .then(teamArr => {
+    //     return generatePage(teamArr)
+    // })
+    // .then(pageHTML => {
+    //     return writeFile(pageHTML)
+    // })
     .catch(err => {
         console.log(err);
     });
