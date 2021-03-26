@@ -1,0 +1,40 @@
+:root {
+    --primary: #9dbdc6;
+    --secondary: #daeaef;
+    --tertiary: #272f32;
+}
+
+* {
+    box-sizing: border-box;
+}
+  
+body {
+    background-color: #e6e6e6;
+    margin: 0;
+    padding: 0;
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 400;
+    color: var(--tertiary);
+    line-height: 1.5;
+    font-size: 15px;
+}
+  
+header {
+    background-color: var(--primary);
+    display: block;
+}
+
+.navbar-brand {
+    font-size: 5.0rem;
+    font-weight: bold;
+}
+
+.card-header {
+    background-color: var(--primary);
+
+}
+
+.card-body {
+    
+    background-color: var(--secondary);
+}
